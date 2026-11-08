@@ -1,0 +1,232 @@
+/* Painel do dono do site. */
+.owner {
+  padding-top: 1.5rem;
+  padding-bottom: 4rem;
+  display: grid;
+  gap: 1.4rem;
+}
+.login {
+  margin: 2rem auto;
+}
+#dash {
+  display: grid;
+  gap: 1.6rem;
+}
+.o-head {
+  display: grid;
+  gap: 0.4rem;
+}
+.o-head h1 {
+  font-size: 2rem;
+  font-stretch: 118%;
+}
+.o-sec {
+  display: grid;
+  gap: 0.6rem;
+}
+.o-card {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  min-width: 0;
+}
+.o-kpis {
+  display: grid;
+  gap: 0.8rem;
+}
+.kpi {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.kpi h3 {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  font-stretch: 100%;
+}
+.kpi .big {
+  font-size: 1.9rem;
+  font-weight: 900;
+  font-stretch: 110%;
+  font-variant-numeric: tabular-nums;
+}
+.kpi dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.2rem 0.8rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+.kpi dt {
+  color: var(--ink-2);
+}
+.kpi dd {
+  margin: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.neg {
+  color: var(--bad);
+}
+.legend {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+.legend i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 0.35rem;
+}
+.l-pos {
+  background: var(--good);
+}
+.l-neg {
+  background: var(--bad);
+}
+.chart-holder {
+  position: relative;
+  min-width: 0;
+}
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.chart .zero {
+  stroke: var(--line-2);
+}
+.chart text {
+  fill: var(--ink-2);
+  font-size: 11px;
+  font-family: var(--font);
+}
+.chart .bar-pos {
+  fill: var(--good);
+}
+.chart .bar-neg {
+  fill: var(--bad);
+}
+.chart .bar-hit {
+  fill: transparent;
+  cursor: pointer;
+}
+.chart-tip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 6px));
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.82rem;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.funnel {
+  display: grid;
+  gap: 0.5rem;
+}
+.funnel > div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  font-size: 0.92rem;
+}
+.funnel .bar {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--paper-2);
+  overflow: hidden;
+}
+.funnel .bar i {
+  display: block;
+  height: 100%;
+  background: var(--yolk);
+  border-radius: 5px;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.o-inline {
+  display: grid;
+  gap: 0.7rem;
+  align-items: end;
+}
+.list {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.list th,
+.list td {
+  padding: 0.5rem 0.4rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.list th {
+  font-size: 0.8rem;
+  color: var(--ink-2);
+}
+.list .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.list .acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.note-text {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-2);
+}
+.locked {
+  color: var(--ink-2);
+}
+.status-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.status-list li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+.link-out {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.5rem;
+  background: var(--yolk-soft);
+  border-radius: var(--radius-sm);
+}
+.link-out code {
+  overflow-wrap: anywhere;
+  user-select: all;
+  font-size: 0.82rem;
+}
+@media (min-width: 760px) {
+  .o-kpis {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .o-inline {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+  #acc-form {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}

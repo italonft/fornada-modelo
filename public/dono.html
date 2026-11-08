@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Painel do dono · Fornada</title>
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#2a1a14">
+<link rel="icon" href="/img/icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/dono.css">
+<script type="module" src="/js/dono.js"></script>
+</head>
+<body class="site">
+<header class="site-top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span data-brand>Fornada</span></a>
+    <nav><button class="btn btn-on-dark btn-small" type="button" id="logout" hidden>Sair</button></nav>
+  </div>
+</header>
+
+<main class="wrap owner">
+  <form class="auth-card login" id="login" hidden novalidate>
+    <h1>Painel do dono</h1>
+    <p class="muted">Vendas do Pro, lucro por dia, contas e de onde vêm os clientes.</p>
+    <label class="field"><span>Senha</span><input id="pw" type="password" autocomplete="current-password" required></label>
+    <p class="error-text" id="login-err" role="alert" hidden></p>
+    <button class="btn btn-main" type="submit">Entrar</button>
+  </form>
+
+  <div id="dash" hidden>
+    <section class="o-head">
+      <h1>Seu negócio</h1>
+      <p class="muted" id="dash-sub"></p>
+    </section>
+    <section class="o-kpis" id="kpis"></section>
+
+    <section class="o-sec">
+      <h2>Lucro por dia</h2>
+      <div class="o-card">
+        <div class="legend"><span><i class="l-pos"></i>Lucro</span><span><i class="l-neg"></i>Prejuízo</span></div>
+        <div class="chart-holder" id="chart"></div>
+        <p class="muted small">Lucro = vendas do Pro − reembolsos − taxa estimada do Pix − gastos que você anotar. Passe o dedo ou o mouse sobre as barras.</p>
+        <details><summary>Ver em tabela</summary><div class="table-wrap" id="chart-table"></div></details>
+      </div>
+    </section>
+
+    <section class="o-sec">
+      <h2>Do clique à venda</h2>
+      <div class="o-card">
+        <div class="funnel" id="funnel"></div>
+        <p class="muted small" id="funnel-note"></p>
+      </div>
+    </section>
+
+    <section class="o-sec">
+      <h2>Contas</h2>
+      <div class="o-card">
+        <form class="o-inline" id="acc-form" novalidate>
+          <label class="field"><span>Buscar por e-mail, nome ou endereço do cardápio</span><input id="acc-q" type="search" maxlength="80" placeholder="Deixe vazio para ver as mais novas"></label>
+          <button class="btn" type="submit">Buscar</button>
+        </form>
+        <div class="table-wrap" id="accounts"></div>
+        <p class="muted small">Esqueceram a senha e o código? Confira que a pessoa escreveu do e-mail da conta e mande o link de senha nova pelo canal que ela usou. O link vale 24 horas e uma vez só.</p>
+      </div>
+    </section>
+
+    <section class="o-sec">
+      <h2>De onde vêm as contas e as vendas</h2>
+      <div class="o-card">
+        <p class="muted">Use links com ?ref= para cada anúncio ou parceria, por exemplo <code id="ref-example"></code>. Quem chega por um cardápio de loja aparece como "cardapio".</p>
+        <div class="table-wrap" id="refs"></div>
+      </div>
+    </section>
+
+    <section class="o-sec">
+      <h2>Gastos</h2>
+      <div class="o-card">
+        <p class="muted">Anote o que gastar com anúncios e outras despesas. Eles entram no lucro do dia.</p>
+        <form class="o-inline" id="cost-form" novalidate>
+          <label class="field"><span>Dia</span><input id="cost-day" type="date" required></label>
+          <label class="field"><span>Valor (R$)</span><input id="cost-amount" inputmode="decimal" placeholder="25,00" required></label>
+          <label class="field"><span>Descrição</span><input id="cost-note" maxlength="80" placeholder="Anúncio no Instagram"></label>
+          <button class="btn" type="submit">Anotar</button>
+        </form>
+        <p class="error-text" id="cost-err" role="alert" hidden></p>
+        <div class="table-wrap" id="costs"></div>
+      </div>
+    </section>
+
+    <section class="o-sec">
+      <h2>Cupons</h2>
+      <div class="o-card">
+        <p class="muted">Para parcerias com quem ensina confeitaria, sorteios ou um teste seu. 100% libera sem pagar.</p>
+        <form class="o-inline" id="coupon-form" novalidate>
+          <label class="field"><span>Código</span><input id="cp-code" maxlength="24" placeholder="CONFEITEIRA10" required></label>
+          <label class="field"><span>Desconto (%)</span><input id="cp-pct" inputmode="numeric" placeholder="10" required></label>
+          <label class="field"><span>Limite de usos</span><input id="cp-max" inputmode="numeric" placeholder="Sem limite"></label>
+          <label class="field"><span>Observação</span><input id="cp-note" maxlength="80" placeholder="Parceria com a professora X"></label>
+          <button class="btn" type="submit">Criar</button>
+        </form>
+        <p class="error-text" id="cp-err" role="alert" hidden></p>
+        <div class="table-wrap" id="coupons"></div>
+      </div>
+    </section>
+
+    <section class="o-sec">
+      <h2>Pagamentos recentes</h2>
+      <div class="o-card"><div class="table-wrap" id="orders"></div></div>
+    </section>
+
+    <section class="o-sec">
+      <h2>Funcionamento</h2>
+      <div class="o-card"><ul class="status-list" id="status"></ul></div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

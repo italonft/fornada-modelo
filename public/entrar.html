@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Entrar · Fornada</title>
+<meta name="theme-color" content="#2a1a14">
+<link rel="icon" href="/img/icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="site auth">
+<header class="site-top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span data-brand>Fornada</span></a>
+    <nav aria-label="Conta"><a class="btn btn-main btn-small" href="/comecar">Criar conta</a></nav>
+  </div>
+</header>
+<main class="auth-main">
+  <div class="auth-card" data-page="entrar">
+    <h1>Entrar</h1>
+    <form id="form" novalidate>
+      <label class="field"><span>E-mail</span><input name="email" type="email" autocomplete="email" required></label>
+      <label class="field"><span>Senha</span><input name="password" type="password" autocomplete="current-password" required></label>
+      <p class="error-text" id="erro" role="alert" hidden></p>
+      <button class="btn btn-main btn-block">Entrar</button>
+    </form>
+    <div class="auth-links">
+      <a href="/recuperar">Esqueci a senha</a>
+      <span>Ainda não tem conta? <a href="/comecar">Criar conta grátis</a></span>
+    </div>
+  </div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© <span data-brand>Fornada</span></span>
+    <nav aria-label="Rodapé"><a href="/termos">Termos de uso</a><a href="/privacidade">Privacidade</a></nav>
+  </div>
+</footer>
+<script type="module" src="/js/auth.js"></script>
+</body>
+</html>

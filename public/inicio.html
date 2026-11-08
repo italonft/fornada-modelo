@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fornada: preço certo para quem vende comida feita em casa</title>
+<meta name="description" content="Calcule o custo de verdade de cada receita, o preço certo no Pix, na maquininha e no iFood, e organize encomendas, lista de compras, cardápio online e lucro do mês.">
+<meta property="og:title" content="Fornada: quanto sobra de cada venda?">
+<meta property="og:description" content="Custo de verdade, preço certo em cada canal, encomendas, lista de compras e cardápio online para confeitaria, salgados e marmitas.">
+<meta property="og:image" content="/img/og.png">
+<meta property="og:url" content="/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="/">
+<meta name="theme-color" content="#2a1a14">
+<link rel="icon" href="/img/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/icone-192.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="site">
+<header class="site-top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span data-brand>Fornada</span></a>
+    <nav aria-label="Conta">
+      <a href="/entrar">Entrar</a>
+      <a class="btn btn-main btn-small" href="/comecar">Criar conta</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1>Quanto sobra de cada brigadeiro?</h1>
+        <p>A Fornada soma ingredientes, embalagem, o seu tempo e os custos do mês, e mostra o preço certo no Pix, na maquininha e no iFood. Também organiza encomendas, lista de compras, cardápio online e o lucro do mês.</p>
+        <div class="hero-cta">
+          <a class="btn btn-main" href="/comecar">Criar conta grátis</a>
+          <a class="btn btn-on-dark" href="#como-funciona">Ver como funciona</a>
+        </div>
+        <p class="hero-note"><span data-trial>7 dias</span> de Pro para testar tudo. Sem cartão e sem fidelidade.</p>
+      </div>
+
+      <form class="scale" id="calc" aria-label="Calculadora de exemplo: brigadeiro" novalidate>
+        <div class="scale-head">
+          <h2>Brigadeiro, de exemplo</h2>
+          <span>mude os números</span>
+        </div>
+        <div class="scale-inputs">
+          <label class="scale-row"><span>Leite condensado <small>1 lata de 395 g</small></span>
+            <span class="affix"><span class="pre">R$</span><input inputmode="decimal" name="condensado" value="6,49" autocomplete="off"></span></label>
+          <label class="scale-row"><span>Manteiga <small>1 colher de sopa, pote de 200 g</small></span>
+            <span class="affix"><span class="pre">R$</span><input inputmode="decimal" name="manteiga" value="11,90" autocomplete="off"></span></label>
+          <label class="scale-row"><span>Chocolate em pó <small>3 colheres de sopa, 200 g</small></span>
+            <span class="affix"><span class="pre">R$</span><input inputmode="decimal" name="chocolate" value="9,90" autocomplete="off"></span></label>
+          <label class="scale-row"><span>Forminhas <small>pacote com 100</small></span>
+            <span class="affix"><span class="pre">R$</span><input inputmode="decimal" name="forminha" value="6,00" autocomplete="off"></span></label>
+          <label class="scale-row"><span>Rende</span>
+            <span class="affix"><input inputmode="decimal" name="rende" value="25" autocomplete="off"><span class="post">un</span></span></label>
+          <label class="scale-row"><span>Seu tempo na receita</span>
+            <span class="affix"><input inputmode="decimal" name="minutos" value="40" autocomplete="off"><span class="post">min</span></span></label>
+          <label class="scale-row"><span>Sua hora de trabalho vale</span>
+            <span class="affix"><span class="pre">R$</span><input inputmode="decimal" name="hora" value="15,00" autocomplete="off"></span></label>
+        </div>
+        <div class="scale-displays" aria-live="polite">
+          <div class="lcd" id="lcd-custo"><span class="lcd-label">Custo por unidade</span><span class="lcd-digits"><span class="cur">R$</span><span class="val"><span class="ghost">8.88</span><span class="lit">0.78</span></span></span></div>
+          <div class="lcd" id="lcd-preco"><span class="lcd-label">Preço com 20% de lucro</span><span class="lcd-digits"><span class="cur">R$</span><span class="val"><span class="ghost">8.88</span><span class="lit">1.00</span></span></span></div>
+        </div>
+        <dl class="scale-channels" id="canais">
+          <div><dt>No Pix ou dinheiro</dt><dd>R$ 1,00</dd></div>
+          <div><dt>Na maquininha (4%)</dt><dd>R$ 1,10</dd></div>
+          <div><dt>No iFood (26,2%)</dt><dd>R$ 1,50</dd></div>
+        </dl>
+        <div class="scale-verdict">
+          <label class="scale-row"><span>Você cobra</span>
+            <span class="affix"><span class="pre">R$</span><input inputmode="decimal" name="cobra" value="1,20" autocomplete="off"></span></label>
+          <p id="veredito"><span class="chip chip-good">Lucro de 35%</span> O preço paga tudo, inclusive o seu tempo.</p>
+        </div>
+        <p class="scale-foot">Exemplo sem custos fixos. No app entram o gás, a luz e o que mais você paga todo mês.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec" id="como-funciona">
+    <div class="wrap">
+      <h2>Do caderno de receitas ao dinheiro no fim do mês</h2>
+      <p class="sec-lead">Feito para confeitaria, salgados de festa e marmitas. Funciona no navegador do celular, sem instalar nada.</p>
+      <ul class="flow">
+        <li>
+          <h3>Ficha técnica do jeito que você cozinha</h3>
+          <p>Lata, xícara, colher ou grama. Monte a massa e o recheio uma vez e use em vários produtos. Perda do forno e tempo de trabalho entram na conta.</p>
+          <span class="tag">1 lata · 3 colheres · 120 g de massa</span>
+        </li>
+        <li>
+          <h3>Preço certo em cada canal</h3>
+          <p>Ingredientes, embalagem, seu salário e os custos fixos somados. O app mostra quanto cobrar no Pix, na maquininha e no iFood, e avisa quando um preço dá prejuízo.</p>
+          <span class="tag">Pix R$ 1,00 · iFood R$ 1,50</span>
+        </li>
+        <li>
+          <h3>Encomendas sem caderno</h3>
+          <p>Agenda por dia, sinal recebido, quanto falta pagar e o resumo pronto para mandar no WhatsApp do cliente, com a sua chave Pix.</p>
+          <span class="tag">Sáb., 14/11 · 15h · falta R$ 67,00</span>
+        </li>
+        <li>
+          <h3>Lista de compras da semana</h3>
+          <p>Os pedidos confirmados viram a lista do mercado, em latas e pacotes, já descontando o que você tem em casa. E quantas receitas de cada massa fazer.</p>
+          <span class="tag">5 latas de leite condensado · 2 receitas de massa</span>
+        </li>
+        <li>
+          <h3>Cardápio online com pedido</h3>
+          <p>Um link para a bio do Instagram e o status do WhatsApp. O cliente escolhe, e o pedido chega no seu WhatsApp e na sua agenda.</p>
+          <span class="tag">/c/doces-da-bia</span>
+        </li>
+        <li>
+          <h3>O lucro do mês de verdade</h3>
+          <p>Quanto entrou, quanto foi para ingredientes, taxas e custos fixos, quanto sobrou para você e quanto você ganhou por hora de cozinha.</p>
+          <span class="tag">Sobrou para você · ganho por hora</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec rise">
+    <div class="wrap">
+      <h2>Subiu o leite condensado? O app avisa o que mudou.</h2>
+      <div class="rise-grid">
+        <ol class="steps-text">
+          <li>Voltou do mercado: atualize os preços de uma vez, na lista.</li>
+          <li>Todas as receitas que usam o ingrediente são refeitas na hora.</li>
+          <li>A tela inicial mostra quais produtos ficaram abaixo da sua meta, com o preço novo sugerido.</li>
+        </ol>
+        <div class="receipt" aria-label="Exemplo de aviso de preço">
+          <div class="receipt-row"><span>Leite condensado</span><span><s>R$ 6,49</s> R$ 7,29</span></div>
+          <div class="receipt-row"><span>Custo do brigadeiro</span><span><s>R$ 0,78</s> R$ 0,81</span></div>
+          <hr>
+          <div class="receipt-row"><span>Bolo de pote no iFood</span><span class="chip chip-warn">abaixo da meta</span></div>
+          <div class="receipt-row"><span>Preço sugerido</span><strong>R$ 15,90</strong></div>
+          <p class="small muted">Exemplo ilustrativo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="precos">
+    <div class="wrap">
+      <h2>Comece grátis. Assine quando fizer sentido.</h2>
+      <div class="prices">
+        <div class="price-card">
+          <h3>Grátis</h3>
+          <p class="price-big">R$ 0</p>
+          <ul>
+            <li>Até <span data-free-products>5</span> produtos à venda</li>
+            <li>Até <span data-free-orders>20</span> pedidos por mês, mais os que chegam pelo cardápio</li>
+            <li>Ingredientes e receitas base sem limite</li>
+            <li>Preço sugerido por canal</li>
+            <li>Cardápio online</li>
+          </ul>
+          <a class="btn" href="/comecar">Criar conta grátis</a>
+        </div>
+        <div class="price-card pro">
+          <h3>Pro</h3>
+          <p class="price-big" data-price-mes>R$ 19,90</p>
+          <p class="price-alt">por 30 dias, ou <span data-price-tri>R$ 49,90</span> por 3 meses, ou <span data-price-ano>R$ 159,90</span> por 1 ano.</p>
+          <ul>
+            <li>Tudo do grátis</li>
+            <li>Produtos e pedidos sem limite</li>
+            <li>Lista de compras completa, com embalagens e gasto</li>
+            <li>Lucro por produto e por canal, e planilha do mês</li>
+          </ul>
+          <p class="small muted">Pago por Pix. Sem renovação automática: os dias se somam. Reembolso em até <span data-refund>7</span> dias.</p>
+          <a class="btn btn-main" href="/comecar">Testar o Pro grátis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="duvidas">
+    <div class="wrap">
+      <h2>Dúvidas</h2>
+      <div class="faq">
+        <details><summary>Preciso instalar alguma coisa?</summary><p>Não. Funciona no navegador do celular e do computador. No celular, dá para colocar o ícone na tela inicial e abrir como um app.</p></details>
+        <details><summary>Serve para salgados e marmitas?</summary><p>Sim. Ao criar a conta você escolhe o tipo de negócio e já começa com os ingredientes e embalagens mais comuns dele.</p></details>
+        <details><summary>Como o app sabe o preço dos meus ingredientes?</summary><p>Você coloca o que pagou, olhando a nota do mercado. Depois é só atualizar quando mudar. Cada pessoa paga um preço diferente, então o app não chuta.</p></details>
+        <details><summary>O preço sugerido é obrigatório?</summary><p>Não. Você cobra o que quiser. O app mostra quanto sobra no seu preço e avisa quando ele não paga os ingredientes ou o seu tempo.</p></details>
+        <details><summary>Como funciona o pagamento?</summary><p>Por Pix, direto no app. Você escolhe 1 mês, 3 meses ou 1 ano. Não há cobrança automática: quando acabar, a conta volta para o grátis sem perder nada.</p></details>
+        <details><summary>E se eu desistir?</summary><p>Em até <span data-refund>7</span> dias depois do pagamento, o reembolso é feito na hora, pela própria conta.</p></details>
+        <details><summary>Meus dados ficam seguros?</summary><p>Ficam na sua conta, protegidos por senha. Você pode baixar tudo ou apagar a conta quando quiser. O dinheiro dos seus clientes vai direto para a sua chave Pix: o app nunca passa por ele.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec end">
+    <div class="wrap">
+      <h2>Comece pelo produto que você mais vende.</h2>
+      <p>Monte a ficha dele e veja o custo de verdade e o preço certo em cada canal.</p>
+      <a class="btn btn-main" href="/comecar">Criar conta grátis</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© <span data-brand>Fornada</span></span>
+    <nav aria-label="Rodapé"><a href="/termos">Termos de uso</a><a href="/privacidade">Privacidade</a><a href="/entrar">Entrar</a></nav>
+  </div>
+</footer>
+<script type="module" src="/js/landing.js"></script>
+</body>
+</html>

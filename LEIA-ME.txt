@@ -1,0 +1,258 @@
+FORNADA
+Preço certo, encomendas, lista de compras e cardápio online para quem vende comida feita em casa.
+Vendido por assinatura Pro paga por Pix, que se libera sozinha.
+
+Nenhum app garante venda nem lucro. Este resolve um problema real e diário (quem vende doce, salgado
+ou marmita quase nunca sabe quanto sobra de cada venda), e existe gente pagando por apps assim. Mas
+as pessoas ainda precisam chegar até ele. Comece pequeno, meça no painel do dono e só gaste mais com
+o que der resultado.
+
+
+O QUE ELE FAZ PARA QUEM ASSINA
+
+  - Ficha técnica do jeito que a pessoa cozinha: lata, xícara, colher ou grama. Massas e recheios
+    viram receitas base, usadas dentro de outros produtos. Perda do forno e tempo de trabalho entram.
+  - Custo de verdade de cada produto: ingredientes, embalagem, o salário que a pessoa quer ganhar
+    (pelo tempo de cada receita) e os custos fixos do mês (gás, luz, internet, DAS).
+  - Preço sugerido em cada canal: Pix ou dinheiro, maquininha, iFood. Avisa quando um preço dá
+    prejuízo, quando não paga o tempo dela e quando fica abaixo da meta de lucro.
+  - Ingrediente subiu? Ela atualiza o preço uma vez e todas as receitas são refeitas. A tela inicial
+    mostra os produtos que ficaram com preço baixo.
+  - Pedidos: agenda por dia, sinal, quanto falta receber, resumo pronto para o WhatsApp do cliente
+    com a chave Pix dela, e uma página do pedido para o cliente acompanhar.
+  - Lista de compras e de produção: os pedidos confirmados viram latas e pacotes a comprar e quantas
+    receitas de cada massa fazer, descontando o que ela tem em casa.
+  - Cardápio online com link próprio (/c/nome-da-loja): o cliente escolhe, o pedido entra na agenda
+    e abre o WhatsApp da loja. Todo cardápio mostra "Cardápio feito com Fornada" no rodapé: cada
+    cliente das lojas vê o seu app.
+  - Lucro do mês: vendas, ingredientes, taxas, custos fixos, quanto sobrou para ela e o ganho por hora.
+
+Começa com os ingredientes e embalagens mais comuns do tipo de negócio (confeitaria, salgados ou
+marmitas) e uma receita de exemplo. Funciona no navegador do celular e do computador.
+
+
+COMO ELE GANHA DINHEIRO SOZINHO
+
+  - Conta nova ganha 7 dias de Pro para testar tudo.
+  - Depois, o plano grátis continua: até 5 produtos à venda e 20 pedidos lançados por mês (pedidos
+    do cardápio não contam). Lista de compras completa e lucro por produto ficam no Pro.
+  - Pro: R$ 19,90 por 30 dias, R$ 49,90 por 3 meses ou R$ 159,90 por 1 ano (você muda os valores).
+    Pago por Pix dentro do app. O Pix é gerado, conferido e libera os dias sozinho, a qualquer hora.
+    Sem cobrança automática: quando acaba, a conta volta para o grátis sem perder nada.
+  - Reembolso automático em até 7 dias depois do pagamento, pelo próprio app (direito de
+    arrependimento do Código de Defesa do Consumidor).
+  - Referência de mercado: em novembro de 2026 a App Store mostrava o app "Lucro na Confeitaria" a
+    R$ 20,90 por mês ou R$ 199,90 por ano, com plano grátis de 6 receitas e 2 produtos.
+
+O que não é automático:
+  - Trazer as primeiras pessoas. Veja "Como divulgar".
+  - Responder dúvidas no e-mail de contato e ajudar quem perdeu a senha e o código (painel do dono).
+
+
+PASSO A PASSO
+
+1. Ver funcionando no seu computador (opcional, sem conta nenhuma)
+   Windows: Testar.bat. Mac: Testar.command. Linux: testar.sh.
+   Na primeira vez ele baixa o Node.js e as ferramentas da Cloudflare (até 250 MB) e abre
+   http://localhost:8787. Crie uma conta em "Criar conta". A senha do painel do dono
+   (http://localhost:8787/dono) no teste é teste-local-123.
+   O Pix fica desligado no teste. Para ver o Pro, crie um cupom de 100% no painel do dono e use em
+   Conta > Plano.
+   No Mac, se aparecer aviso de segurança: clique com o botão direito no arquivo e escolha Abrir.
+
+2. Crie as contas
+   - Cloudflare, grátis: https://dash.cloudflare.com/sign-up
+   - Mercado Pago: use a sua conta.
+
+3. Pegue o Access Token do Mercado Pago
+   Entre em https://www.mercadopago.com.br/developers, abra "Suas integrações" e crie uma
+   aplicação de pagamentos online (Checkout Transparente, por API). Em "Credenciais de produção",
+   copie o Access Token, que começa com APP_USR-. O Mercado Pago pode pedir alguns dados do
+   negócio para liberar a produção. Esse token é a chave da sua conta: não mande para ninguém.
+
+4. Publique
+   Windows: Publicar.bat. Mac: Publicar.command. Linux: publicar.sh.
+   Ele entra na Cloudflare pelo navegador, cria o banco de dados, pergunta seu e-mail de contato,
+   seu nome e os preços do Pro, pede o Access Token, cria a senha do painel do dono, cria a
+   proteção extra das senhas e publica.
+   No fim mostra o endereço, algo como https://fornada.SEU-NOME.workers.dev, e guarda os
+   endereços em publicacao.txt. A senha do painel do dono aparece uma vez só: anote.
+   Na primeira vez, a Cloudflare pode pedir para você escolher o nome do subdomínio workers.dev.
+
+5. Ligue o aviso de pagamento (para liberar na hora)
+   No Mercado Pago: Suas integrações > sua aplicação > Webhooks > Configurar notificações.
+   Em "URL modo produção", cole https://SEU-SITE/api/mp/webhook, marque o evento
+   "Order (Mercado Pago)" e salve. Copie a "Assinatura secreta", abra o Publicar de novo e
+   escolha a opção 3. Sem isso, o pagamento ainda é conferido com a pessoa na tela e, depois,
+   a cada 10 minutos.
+
+6. Faça um teste com dinheiro de verdade
+   Crie a sua conta no site. No painel do dono (https://SEU-SITE/dono), crie um cupom de 90%.
+   No app, em Conta > Plano, pague o Pro de 1 mês com o cupom (R$ 1,99) e confira se liberou
+   sozinho. Depois peça o reembolso ali mesmo e confira se o dinheiro voltou.
+
+7. Use você mesmo por uma semana
+   Monte 3 produtos reais, lance pedidos e abra o cardápio no celular. Corrija o que estranhar
+   antes de divulgar.
+
+
+PUBLICAR SÓ PELO CELULAR (sem computador)
+
+Dá para publicar só com o navegador do celular. O código fica no GitHub e a Cloudflare publica de lá,
+com o botão "Deploy to Cloudflare". Leva uns 30 minutos.
+
+1. Crie uma conta grátis no GitHub (https://github.com/signup) e outra na Cloudflare
+   (https://dash.cloudflare.com/sign-up).
+2. Coloque esta pasta num repositório PÚBLICO do GitHub. Esse repositório é só o modelo: no passo 4
+   a Cloudflare faz uma cópia dele na sua conta.
+3. Abra no celular, trocando pelo seu usuário e o nome do repositório:
+   https://deploy.workers.cloudflare.com/?url=https://github.com/SEU-USUARIO/SEU-REPOSITORIO
+4. Entre na Cloudflare e autorize o GitHub. Dê um nome diferente para o repositório novo (por
+   exemplo, fornada-app). Em ADMIN_PASSWORD, invente a senha do painel do dono. Toque em Deploy.
+   A Cloudflare copia o código para a sua conta do GitHub, cria o banco de dados, cria as tabelas
+   e publica. Se ela pedir para escolher o nome do subdomínio workers.dev, escolha um.
+5. No fim aparece o endereço, algo como https://fornada.SEU-NOME.workers.dev.
+6. Pix: pegue o Access Token (passo 3 de cima). Na Cloudflare, abra Workers & Pages > fornada >
+   Settings > Variables and Secrets > Add, escolha o tipo Secret, nome MP_ACCESS_TOKEN, cole o
+   token e salve. Depois ligue o aviso de pagamento (passo 5 de cima) e crie do mesmo jeito o
+   segredo MP_WEBHOOK_SECRET com a "Assinatura secreta".
+   Se a senha do painel do dono não foi pedida no passo 4, crie também o segredo ADMIN_PASSWORD.
+7. Seu e-mail de contato e seu nome: no GitHub, abra o repositório novo, toque em wrangler.toml,
+   no lápis, e preencha CONTACT_EMAIL e OWNER_NAME. Ao salvar (Commit changes), a Cloudflare
+   publica de novo sozinha. Preços, limites do grátis e dias de teste mudam do mesmo jeito.
+8. Faça o teste com dinheiro de verdade (passo 6 de cima), pagando com o app do seu banco.
+9. Depois, apague o repositório modelo do passo 2 ou deixe ele privado (Settings > Danger Zone).
+
+Nesse caminho, o app cria sozinho os segredos SESSION_SECRET e PASSWORD_PEPPER e guarda no banco.
+Não crie esses dois segredos na Cloudflare depois: o app ignora o PASSWORD_PEPPER novo, para as
+senhas das contas continuarem valendo.
+
+
+QUANTO CUSTA MANTER
+
+  - Cloudflare, plano grátis: 100 mil acessos por dia e banco de dados de até 500 MB. As fotos dos
+    produtos ficam no banco (até cerca de 90 KB cada, reduzidas no próprio celular). 500 MB dão
+    para alguns milhares de fotos. Quando chegar perto, o plano pago da Cloudflare (cerca de US$ 5
+    por mês) aumenta os limites; confira o preço no site.
+  - Mercado Pago: taxa por Pix recebido. Um comparador de taxas indicava "a partir de 0,99%" em
+    setembro de 2026. Confira a sua e, se for outra, mude PIX_FEE_PCT no wrangler.toml e publique
+    de novo, para o lucro do painel ficar certo.
+  - Domínio próprio (opcional): um .com.br custa cerca de R$ 40 por ano no registro.br.
+
+Com R$ 19,90 por mês e 0,99% de taxa, sobram cerca de R$ 19,70. Para R$ 100 por dia de lucro
+(R$ 3.000 por mês), sem contar anúncios, são cerca de 150 assinaturas mensais ativas. É uma meta,
+não uma previsão.
+
+
+COMO DIVULGAR (o público é quem vende doce, salgado e marmita)
+
+  - Links com origem: SEU-SITE/?ref=insta, ?ref=tiktok, ?ref=professora-ana. O painel do dono
+    mostra visitas, contas criadas e vendas de cada um.
+  - Vídeos curtos com a conta na tela: "quanto custa de verdade um brigadeiro", "o iFood leva 26%
+    do seu bolo de pote". A calculadora da página inicial funciona sem conta: use nos vídeos.
+  - Parcerias com quem ensina confeitaria, salgados ou marmita (cursos, perfis grandes): crie um
+    cupom com o nome da pessoa e combine uma comissão por venda.
+  - O rodapé dos cardápios: cada loja que divulga o cardápio mostra o app para os clientes dela.
+  - Grupos de confeiteiras: participe ajudando com preço e custo. Não mande link em massa.
+  - Anúncio pago: comece com R$ 10 a R$ 20 por dia, anote o gasto em "Gastos" no painel do dono
+    e só aumente se o lucro do dia ficar positivo por uma semana.
+  - Nunca: comprar lista de contatos, mandar mensagem em massa ou inventar depoimento.
+
+
+AJUDAR QUEM PERDEU A SENHA
+
+  - Ao criar a conta, a pessoa recebe um código de recuperação. Com ele, ela cria uma senha nova
+    sozinha em SEU-SITE/recuperar.
+  - Sem o código: peça que ela escreva do e-mail da conta. No painel do dono, em Contas, busque
+    o e-mail e clique em "Link de senha nova". Mande o link pelo mesmo canal. Ele vale 24 horas e
+    uma vez só.
+  - O app não manda e-mails. Por isso o código e o link existem.
+
+
+REGRAS E IMPOSTOS (confirme com um contador)
+
+  - Recebendo como pessoa física, a renda precisa ser declarada.
+  - Contadores apontam que os CNAEs de desenvolvimento e licenciamento de software (6201-5/01,
+    6202-3/00 e 6203-1/00) não podem ser MEI. Quando as vendas crescerem, a saída costuma ser
+    uma ME no Simples Nacional.
+  - LGPD: você guarda dados de quem assina e, por conta delas, dados dos clientes delas (nome,
+    WhatsApp, endereço). Para esses, elas decidem o uso e você é o operador. A política de
+    privacidade e os termos já estão no site, com o seu nome e e-mail. Leia e ajuste se precisar.
+  - Cada assinante pode baixar ou apagar todos os dados pela própria conta.
+
+
+MUDAR DEPOIS
+
+  - Preços do Pro, e-mail ou nome: Publicar > opção 5.
+  - Trocar o Access Token: opção 2. Trocar a senha do dono: opção 4.
+  - Limites do grátis, dias de teste e prazo de reembolso: FREE_PRODUCTS, FREE_ORDERS,
+    TRIAL_DAYS e REFUND_DAYS no wrangler.toml. Depois, Publicar > opção 1.
+  - Domínio próprio: no painel da Cloudflare, Workers > fornada > Settings > Domains & Routes.
+  - Nome da marca: troque "Fornada" no wrangler.toml (BRAND) e nos arquivos de public/. Antes de
+    investir num nome, pesquise no INPI (busca.inpi.gov.br) se ele já é marca registrada.
+
+
+SEGURANÇA
+
+  - Senhas guardadas com PBKDF2 e um segredo do servidor (PASSWORD_PEPPER). NUNCA apague nem troque
+    o PASSWORD_PEPPER depois que existirem contas: o app deixa de aceitar logins até o valor antigo
+    voltar. O Publicar cria esse segredo uma vez e nunca mexe nele de novo. Na publicação pelo
+    celular, o próprio app cria o segredo e guarda no banco; o painel do dono mostra qual dos dois
+    está valendo, em "Funcionamento".
+  - O plano grátis da Cloudflare limita o processamento de cada acesso, então o embaralhamento das
+    senhas usa 20 mil rodadas. Com o plano pago, dá para subir ITERATIONS em src/security.js; as
+    senhas antigas são refeitas no próximo login.
+  - O Access Token, a senha do dono, a assinatura do aviso e o PASSWORD_PEPPER ficam só nos segredos
+    da Cloudflare, não nos arquivos desta pasta.
+  - O app nunca recebe o dinheiro dos clientes das lojas: ele vai direto para a chave Pix de cada
+    loja.
+  - O site bloqueia excesso de tentativas, aceita pedidos só do próprio endereço e não usa cookies
+    de propaganda.
+
+
+LIMITES
+
+  - Não testei a publicação real na Cloudflare nem pagamentos reais no Mercado Pago, porque daqui
+    não alcanço esses serviços. Testei com a Cloudflare rodando no computador e um Mercado Pago
+    simulado que imita a API oficial: 33 testes automáticos (contas, receitas, pedidos, cardápio,
+    fotos, Pix, reembolso, painel do dono, publicação pelo computador e pelo celular) e o percurso
+    completo no navegador, no celular e no computador. O botão "Deploy to Cloudflare" segue a
+    documentação da Cloudflare, mas também não pude rodar daqui. Por isso o teste com dinheiro de
+    verdade é obrigatório.
+  - Não funciona sem internet.
+  - Medidas caseiras são aproximadas. O app usa 1 xícara = 240 ml e a tabela de pesos do
+    Receiteria; para o custo ficar exato, a pessoa pode pesar e trocar pelo valor dela.
+  - As taxas de iFood e maquininha que vêm preenchidas são pontos de partida. Cada pessoa ajusta
+    as dela em Conta > Preço e custos.
+  - A integração usa a API de orders do Mercado Pago, a que a documentação recomenda em 2026.
+    Se o Mercado Pago mudar algo, o painel do dono mostra o problema em "Funcionamento".
+  - Planos grátis, taxas e regras mudam. Confira antes de depender deles.
+
+
+ARQUIVOS
+
+  public/        telas (página inicial, app, cardápio, pedido do cliente, painel do dono, termos)
+  public/js/shared/   contas de custo, preço, compras e lucro, usadas no navegador e no servidor
+  src/           servidor que roda na Cloudflare (contas, dados, pedidos, cardápio, Pix, rotina)
+  migrations/    tabelas do banco de dados
+  scripts/       publicar, testar e baixar o Node.js
+  test/          testes automáticos (npm test)
+  wrangler.toml  configuração (preços, limites, e-mail)
+
+
+FONTES
+
+  API de orders e Pix: https://www.mercadopago.com.br/developers/pt/docs/checkout-api-orders/payment-integration/pix
+  Estados do pedido: https://www.mercadopago.com.br/developers/en/docs/checkout-pro-orders/payment-management/status/order-status
+  Reembolso de order: https://www.mercadopago.com.mx/developers/pt/reference/online-payments/checkout-api/refund-order/post
+  Avisos (webhooks) e assinatura: https://mercadopago.com.mx/developers/pt/docs/order/online-payments/notifications
+  Taxa do Pix (comparador, set/2026): https://www.calculadoradetaxas.com.br/public/mercado-pago
+  Limites do plano grátis da Cloudflare: https://developers.cloudflare.com/workers/platform/limits
+  Limites do banco D1: https://developers.cloudflare.com/d1/platform/limits/
+  Comissões do iFood (Saipos, jun/2025): https://saipos.com/integracoes/ifood/planos-ifood
+  Medidas caseiras: https://www.receiteria.com.br/dicas/conversor-de-medidas/
+  Concorrente "Lucro na Confeitaria" na App Store: https://apps.apple.com/BR/app/id1571185374
+  Software fora do MEI: https://www.contabilizei.com.br/contabilidade-online/profissional-de-ti-pode-ser-mei/
+
+  Preact (licença MIT) e htm (licença Apache 2.0) estão copiados em public/js/vendor. As fontes
+  Archivo e DSEG7 (licença SIL OFL 1.1) estão em public/fonts. Licenças nos arquivos LICENCAS.txt.

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Criar conta grátis · Fornada</title>
+<meta name="theme-color" content="#2a1a14">
+<link rel="icon" href="/img/icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="site auth">
+<header class="site-top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span data-brand>Fornada</span></a>
+    <nav aria-label="Conta"><a href="/entrar">Entrar</a></nav>
+  </div>
+</header>
+<main class="auth-main">
+  <div class="auth-card" data-page="comecar">
+    <div id="etapa-form">
+      <h1>Crie sua conta grátis</h1>
+      <p class="muted"><span data-trial>7 dias</span> de Pro para testar tudo. Sem cartão.</p>
+    </div>
+    <form id="form" novalidate>
+      <label class="field"><span>Nome do seu negócio</span><input name="business" maxlength="60" autocomplete="organization" placeholder="Ex.: Doces da Bia" required></label>
+      <label class="field"><span>O que você vende</span>
+        <select name="segment">
+          <option value="confeitaria">Doces, bolos e confeitaria</option>
+          <option value="salgados">Salgados e festas</option>
+          <option value="marmitas">Marmitas e refeições</option>
+          <option value="outro">Outra coisa</option>
+        </select>
+      </label>
+      <label class="field"><span>E-mail</span><input name="email" type="email" autocomplete="email" required></label>
+      <label class="field"><span>Senha</span><input name="password" type="password" autocomplete="new-password" minlength="8" required><span class="hint">Pelo menos 8 caracteres.</span></label>
+      <label class="trap" aria-hidden="true">Site<input name="site" tabindex="-1" autocomplete="off"></label>
+      <p class="error-text" id="erro" role="alert" hidden></p>
+      <button class="btn btn-main btn-block">Criar conta</button>
+      <p class="small muted">Ao criar a conta, você aceita os <a href="/termos">termos de uso</a> e a <a href="/privacidade">política de privacidade</a>.</p>
+    </form>
+    <section class="code-box" id="codigo" hidden>
+      <h2>Guarde seu código de recuperação</h2>
+      <p class="muted">Com ele você cria uma senha nova se esquecer a atual. Tire um print ou mande para você mesma no WhatsApp. Ele não aparece de novo.</p>
+      <code id="codigo-texto"></code>
+      <button type="button" class="btn" id="copiar-codigo">Copiar código</button>
+      <a class="btn btn-main" id="abrir-app" href="/app">Já guardei, abrir o app</a>
+    </section>
+  </div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© <span data-brand>Fornada</span></span>
+    <nav aria-label="Rodapé"><a href="/termos">Termos de uso</a><a href="/privacidade">Privacidade</a></nav>
+  </div>
+</footer>
+<script type="module" src="/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=31536000
+
+/app
+  Cache-Control: no-cache
+
+/dono
+  Referrer-Policy: no-referrer
+  Cache-Control: no-store
+
+/nova-senha
+  Referrer-Policy: no-referrer
+  Cache-Control: no-store
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

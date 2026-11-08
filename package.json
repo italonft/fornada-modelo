@@ -1,0 +1,67 @@
+{
+  "name": "fornada",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fornada: preço certo, encomendas, lista de compras e cardápio para quem vende comida feita em casa.",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 \"test/*.test.js\"",
+    "deploy": "wrangler d1 migrations apply DB --remote && wrangler deploy",
+    "publicar": "node scripts/publicar.mjs",
+    "dev": "node scripts/testar.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "4.150.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "cloudflare": {
+    "label": "Fornada",
+    "products": [
+      "Workers",
+      "D1"
+    ],
+    "bindings": {
+      "ADMIN_PASSWORD": {
+        "description": "Senha do seu painel do dono, no endereço /dono do site. Invente uma senha forte só sua e anote."
+      },
+      "CONTACT_EMAIL": {
+        "description": "E-mail de contato mostrado nos Termos de uso e na Privacidade. Pode deixar vazio agora e preencher depois."
+      },
+      "OWNER_NAME": {
+        "description": "Seu nome ou o da sua empresa, como responsável pelo site nos Termos de uso e na Privacidade. Pode deixar vazio agora."
+      },
+      "BRAND": {
+        "description": "Nome do app que aparece no site. Pode deixar **Fornada**."
+      },
+      "PRICE_30": {
+        "description": "Preço do Pro de 30 dias, em centavos: 1990 = R$ 19,90."
+      },
+      "PRICE_90": {
+        "description": "Preço do Pro de 90 dias, em centavos: 4990 = R$ 49,90."
+      },
+      "PRICE_365": {
+        "description": "Preço do Pro de 1 ano, em centavos: 15990 = R$ 159,90."
+      },
+      "TRIAL_DAYS": {
+        "description": "Dias de Pro grátis para quem cria a conta."
+      },
+      "FREE_PRODUCTS": {
+        "description": "Quantos produtos à venda o plano grátis permite."
+      },
+      "FREE_ORDERS": {
+        "description": "Quantos pedidos por mês o plano grátis permite lançar no app. Pedidos feitos pelo cardápio nunca são bloqueados."
+      },
+      "REFUND_DAYS": {
+        "description": "Dias que o cliente tem para pedir o reembolso automático do Pro."
+      },
+      "PIX_FEE_PCT": {
+        "description": "Sua taxa do Mercado Pago por Pix recebido, em %. Serve só para o lucro do painel do dono ficar certo."
+      },
+      "DB": {
+        "description": "Banco de dados do app. Deixe a Cloudflare criar um novo."
+      }
+    }
+  }
+}

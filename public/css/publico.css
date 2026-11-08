@@ -1,0 +1,428 @@
+/* Cardápio público e página do pedido para o cliente. */
+.public {
+  background: var(--bg);
+}
+.menu-top {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.menu-top-in,
+.menu-main,
+.ticket-page {
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.menu-top-in {
+  padding-top: calc(1.6rem + env(safe-area-inset-top, 0px));
+  padding-bottom: 1.2rem;
+  display: grid;
+  gap: 0.35rem;
+}
+.menu-top h1 {
+  font-size: clamp(1.9rem, 8vw, 2.8rem);
+  font-weight: 900;
+  font-stretch: 122%;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+.menu-meta {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+.menu-main {
+  display: grid;
+  gap: 1.4rem;
+  padding-top: 1.2rem;
+  padding-bottom: 7rem;
+}
+.menu-note {
+  font-size: 1.02rem;
+}
+.menu-rules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.menu-rules li {
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+.menu-cat {
+  display: grid;
+  gap: 0.4rem;
+}
+.menu-cat h2 {
+  font-size: 1.2rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--ink);
+}
+.dishes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+.dish {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 0.8rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.dish-photo {
+  width: 88px;
+  height: 88px;
+  border-radius: 10px;
+  object-fit: cover;
+  grid-row: span 2;
+}
+.dish-photo-empty {
+  background: repeating-linear-gradient(135deg, var(--yolk-soft) 0 10px, transparent 10px 20px), var(--paper);
+  border: 1px solid var(--line);
+}
+.dish-text {
+  display: grid;
+  gap: 0.2rem;
+  align-content: start;
+}
+.dish-text h3 {
+  font-size: 1.05rem;
+  font-stretch: 105%;
+}
+.dish-desc {
+  color: var(--ink-2);
+  font-size: 0.92rem;
+}
+.dish-price {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.dish-price span {
+  font-weight: 500;
+  color: var(--ink-2);
+  font-size: 0.88rem;
+}
+.dish-qty {
+  grid-column: 2;
+  display: flex;
+  justify-content: flex-start;
+}
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.stepper button {
+  width: 44px;
+  height: 40px;
+  border: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.stepper output {
+  min-width: 2.6rem;
+  text-align: center;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.menu-empty,
+.menu-contact {
+  color: var(--ink-2);
+}
+.cart-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  padding: 0.7rem max(16px, env(safe-area-inset-right, 0px)) calc(0.7rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: var(--choc);
+  color: var(--choc-ink);
+}
+.cart-bar-in {
+  max-width: 44rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+.cart-bar strong {
+  font-variant-numeric: tabular-nums;
+}
+.checkout {
+  border: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: 94vh;
+  margin: auto auto 0;
+  border-radius: 16px 16px 0 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+.checkout::backdrop {
+  background: rgba(20, 12, 9, 0.5);
+}
+.checkout-in {
+  display: grid;
+  gap: 1rem;
+  padding: 1.1rem max(16px, env(safe-area-inset-right, 0px)) calc(1.2rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  max-height: 94vh;
+  overflow-y: auto;
+}
+.checkout-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+.checkout-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+.checkout-items li,
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  font-variant-numeric: tabular-nums;
+}
+.checkout-total {
+  border-top: 1px solid var(--line);
+  padding-top: 0.5rem;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+.checkout form {
+  display: grid;
+  gap: 0.85rem;
+}
+.two {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.radio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.radio-row label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+}
+.trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.sent {
+  display: grid;
+  gap: 0.8rem;
+  text-align: center;
+  justify-items: center;
+  padding: 1rem 0;
+}
+.made-with {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.4rem max(16px, env(safe-area-inset-right, 0px)) calc(6rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  text-align: center;
+}
+.ticket-page .made-with {
+  padding-bottom: 2rem;
+}
+
+/* Pedido do cliente: um comprovante de padaria */
+.ticket-page {
+  padding-top: calc(1.5rem + env(safe-area-inset-top, 0px));
+}
+.ticket {
+  display: grid;
+  gap: 1.1rem;
+  padding: 1.3rem 1.2rem;
+  background: var(--paper);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  border-top: 6px solid var(--yolk);
+}
+.ticket-head {
+  display: grid;
+  gap: 0.2rem;
+  text-align: center;
+  padding-bottom: 0.9rem;
+  border-bottom: 1.5px dashed var(--line-2);
+}
+.ticket-shop {
+  font-weight: 800;
+  font-stretch: 115%;
+}
+.ticket-head h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  font-stretch: 120%;
+}
+.ticket-who {
+  color: var(--ink-2);
+}
+.ticket-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.3rem;
+  counter-reset: step;
+}
+.ticket-steps li {
+  display: grid;
+  justify-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  text-align: center;
+}
+.ticket-steps li::before {
+  content: '';
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--line);
+}
+.ticket-steps li.done {
+  color: var(--ink);
+  font-weight: 700;
+}
+.ticket-steps li.done::before {
+  background: var(--good);
+}
+.ticket-steps li.now::before {
+  background: var(--yolk);
+}
+.ticket-status {
+  text-align: center;
+  font-weight: 650;
+}
+.ticket-status-off {
+  color: var(--bad);
+}
+.ticket-when {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+}
+.ticket-when div {
+  display: grid;
+  gap: 0.1rem;
+}
+.ticket-when dt {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  font-weight: 650;
+}
+.ticket-when dd {
+  margin: 0;
+  font-weight: 700;
+}
+.ticket-items {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.ticket-items td,
+.ticket-items th {
+  padding: 0.35rem 0.2rem;
+  border-bottom: 1px dotted var(--line-2);
+  text-align: left;
+}
+.ticket-items .q {
+  width: 3.4rem;
+  color: var(--ink-2);
+}
+.ticket-items .v {
+  text-align: right;
+  white-space: nowrap;
+}
+.ticket-items .sub td {
+  color: var(--ink-2);
+}
+.ticket-items tfoot th,
+.ticket-items tfoot td {
+  border-bottom: 0;
+  font-weight: 800;
+}
+.ticket-items .due th,
+.ticket-items .due td {
+  color: var(--warn);
+}
+.ticket-pix {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.9rem;
+  border-radius: 8px;
+  background: var(--yolk-soft);
+}
+.ticket-pix h2 {
+  font-size: 1.05rem;
+}
+.pix-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.pix-key code {
+  font-size: 1rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+.ticket-contact {
+  display: grid;
+}
+
+@media (min-width: 560px) {
+  .dish {
+    grid-template-columns: 104px minmax(0, 1fr) auto;
+    align-items: center;
+  }
+  .dish-photo {
+    width: 104px;
+    height: 104px;
+    grid-row: auto;
+  }
+  .dish-qty {
+    grid-column: auto;
+  }
+  .checkout {
+    margin: auto;
+    width: min(32rem, calc(100% - 32px));
+    border-radius: 16px;
+  }
+}

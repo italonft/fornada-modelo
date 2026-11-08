@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nova senha · Fornada</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2a1a14">
+<link rel="icon" href="/img/icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="site auth">
+<header class="site-top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span data-brand>Fornada</span></a>
+    <nav aria-label="Conta"><a href="/entrar">Entrar</a></nav>
+  </div>
+</header>
+<main class="auth-main">
+  <div class="auth-card" data-page="nova-senha">
+    <div id="etapa-form">
+      <h1>Criar uma senha nova</h1>
+      <p class="muted">Este link vale por 24 horas e só uma vez.</p>
+    </div>
+    <form id="form" novalidate>
+      <label class="field"><span>Nova senha</span><input name="password" type="password" autocomplete="new-password" minlength="8" required><span class="hint">Pelo menos 8 caracteres.</span></label>
+      <p class="error-text" id="erro" role="alert" hidden></p>
+      <button class="btn btn-main btn-block">Salvar senha nova</button>
+    </form>
+    <section class="code-box" id="codigo" hidden>
+      <h2>Guarde seu código de recuperação</h2>
+      <p class="muted">Com ele você cria uma senha nova se esquecer a atual. Tire um print ou mande para você mesma no WhatsApp. Ele não aparece de novo.</p>
+      <code id="codigo-texto"></code>
+      <button type="button" class="btn" id="copiar-codigo">Copiar código</button>
+      <a class="btn btn-main" id="abrir-app" href="/app">Já guardei, abrir o app</a>
+    </section>
+  </div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© <span data-brand>Fornada</span></span>
+    <nav aria-label="Rodapé"><a href="/termos">Termos de uso</a><a href="/privacidade">Privacidade</a></nav>
+  </div>
+</footer>
+<script type="module" src="/js/auth.js"></script>
+</body>
+</html>
